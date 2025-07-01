@@ -20,6 +20,8 @@ class Cafe:
 
         try:
             expiration_date = vaccine["expiration_date"]
+            if isinstance(expiration_date, str):
+                expiration_date = datetime.date.fromisoformat(expiration_date)
         except KeyError:
             raise OutdatedVaccineError("Outdated Vaccine")
 
